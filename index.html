@@ -1,0 +1,81 @@
+    <head>
+        <title>PaymentPagerazorpay</title>
+    </head>
+    
+
+    <body>
+        <center>
+            <br><br><br>
+            <h1>Select the Item  you want to buy</h1>
+
+            <script>
+            // var URL="localhost/3000/payments/3000";
+            // var request= new XMLHttpRequest();
+            // request.open("GET",URL,false);
+            // request.send();
+            // return request.response();
+            function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // XHR for Chrome/Firefox/Opera/Safari.
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined") {
+    // XDomainRequest for IE.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    // CORS not supported.
+    xhr = null;
+  }
+  return xhr;
+}
+
+// Helper method to parse the title tag from the response.
+function getTitle(text) {
+  return text.match('<title>(.*)?</title>')[1];
+}
+
+// Make the actual CORS request.
+function makeCorsRequest() {
+  // This is a sample server that supports CORS.
+  var url = 'http://localhost:3000/payment/5000';
+
+  var xhr = createCORSRequest('GET', url);
+  if (!xhr) {
+    alert('CORS not supported');
+    return;
+  }
+
+  // Response handlers.
+  xhr.onload = function() {
+    var text = xhr.responseText;
+    var title = getTitle(text);
+    alert('Response from CORS request to ' + url + ': ' + title);
+  };
+
+  xhr.onerror = function() {
+    alert('Woops, there was an error making the request.');
+  };
+
+  xhr.send();
+}
+makeCorsRequest();
+            </script>
+        </center>
+    </body>
+</heml> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Razorpay checkout</title>
+</head>
+<body>
+    <form action="http://localhost:3000/payment/5000" method="GET">
+        <button value="sbmite">Razorpay</button>
+    </form>
+    
+</body>
+</html>

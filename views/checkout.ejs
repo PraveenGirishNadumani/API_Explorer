@@ -1,0 +1,33 @@
+<br>
+<br>
+<center>
+
+<button id="rzp-button1">Pay Amout</button></center>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "<%=key%>", // Enter the Key ID generated from the Dashboard
+    "amount": "3000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
+    "currency": "INR",
+    "name": "Acme Corp praveen",
+    "description": "A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami",
+    "image": "",
+    "order_id": "<%=orderID%>", //This is a sample Order ID. Create an Order using Orders API. (https://razorpay.com/docs/payment-gateway/orders/integration/#step-1-create-an-order). Refer the Checkout form table given below
+    // "redirect":true,
+    "callback_url":"http://localhost:3000/payment/sucess",
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "note value"
+    }
+   };
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
