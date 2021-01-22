@@ -28,6 +28,7 @@ h1 {
   color: #36639c;
   text-shadow: 4px 1px 0px #eae3e3;
   padding-top: 18px;
+  margin-top: -124px;
 }
 .header1 {
   text-align: center;
@@ -35,7 +36,7 @@ h1 {
   color: #36639c;
   text-shadow: 4px 1px 0px #eae3e3;
   padding-top: 18px;
-  margin-left: -806px;
+  margin-left: -731px;
 }
 #title h1 {
  transform: translateZ(.25px) scale(.75);
@@ -72,7 +73,7 @@ a{
 .module{
   position:relative;
   top:15%;    
-  height:35%;
+  height: 42%;
   width:1000px;
   margin-left:auto;
   margin-right:auto;
@@ -146,7 +147,7 @@ a{
   height:86%;
   width:100%;
   box-sizing:border-box;
-  margin-top: -208px;
+  margin-top: -301px;
   margin-left: 2%;
 }
 .textbox{
@@ -213,9 +214,142 @@ a{
 }
 .headerdetails{
   margin-left: 360pxpx;
-}</style>
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #35659c;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+#sidebar .nav{
+  
+}
+
+#sidebar .nav a{
+  background: none;
+  border-bottom: 1px solid #455A64;
+  color: white;
+  font-size: 14px;
+  padding: 16px 24px;
+}
+
+#sidebar .nav a:hover{
+  background: none;
+  color: #ECEFF1;
+}
+
+#sidebar .nav a i{
+  margin-right: 16px;
+}
+.logo{
+  margin-left: 198px;
+  margin-top: 22px;
+  display: inline-block;
+}
+
+</style>
 </head>
 
+<div id="viewport">
+
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+
+    <header>
+      <a href="#">API's</a>
+    </header>
+    <ul class="nav">
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-view-dashboard"></i> Create Order
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-link"></i> Create Payment
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-widgets"></i>Fetch Payment
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-calendar"></i> Create Customer
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-info-outline"></i> Fetch Customer
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-settings"></i> Create Transfers
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-comment-more"></i> Fetch Transfers
+        </a>
+      </li>
+    </ul>
+  </div>
+<img src="https://i.ibb.co/fxcWxyB/razorpaylogo.png" width="70" height="70" class="logo">
 <div id="title" class="slide header"><h1>Razorpay API Explorer</h1></div>
 <div id="bg">
   <div class="module">

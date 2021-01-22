@@ -1,0 +1,97 @@
+
+<head>
+  <title>Sidebard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="sidebar.css">
+  <link rel="stylesheet" type="text/css" href="explorer.css">
+</head>
+<div id="viewport">
+
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+
+    <header>
+      <a href="#">API's</a>
+    </header>
+    <ul class="nav">
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-view-dashboard"></i> Create Order
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-link"></i> Create Payment
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-widgets"></i>Fetch Payment
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-calendar"></i> Create Customer
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-info-outline"></i> Fetch Customer
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-settings"></i> Create Transfers
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="zmdi zmdi-comment-more"></i> Fetch Transfers
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- Content -->
+  <div id="content">
+  <div id="title" class="slide header">
+
+<span><img src="razorpaylogo.png" width="70" height="70" class="logo">
+  <h1>Razorpay API Explorer</h1>
+  </div></span>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+        <div id="bg">
+  <div class="module">
+  <div id="title" class="slide header1">Request Object:</div>
+    <pre class="headerdetails"> 
+     method: POST
+     body:request Payload
+     headers:{
+      'content-type: application/json; charset=UTF-8'
+      'Authorization' : 'Basic ' + 'base 64 api key token
+     }
+  </pre>
+<form class="form">
+       <input type="text" placeholder="API Request" class="textbox" />
+       <input type="text" placeholder="API Response" class="textbox" />
+        <input type="button" value="Send Request" class="button" />
+        </form>
+ </div>
+ <div class="module1">
+ <form class="form1">
+        <input type="button" value="Open Checkout" class="button" />
+        <input type="text" placeholder="Response Parameters" class="textbox2" />
+        </form>
+        </div>
+
+</div>
+
+        <ul>
+          
+       
+    </div>
+  </div>
+</div>

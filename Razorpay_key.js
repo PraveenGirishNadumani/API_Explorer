@@ -1,6 +1,6 @@
 const Api={
-            key:"rzp_test_Bc7pOvh6Z4niGG",
-            secrete:"40R99oNgJdhMXG5FhuCwpXLi"
+            key:"rzp_test_CS0vIhEmCMQJ1s",
+            secrete:"WfSibnFlHJI4ZQjmzXkvPNQD"
         };
 
 module.exports=Api;

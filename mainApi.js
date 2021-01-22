@@ -22,17 +22,29 @@ app.get('/',function(req,resp){
 app.post('/apiExplorer',(req,resp)=>{
 	console.log(req.body);
 
-	rzp.orders.create(req.body).then((data)=>{
+	rzp.orders.create(req.body)
+	.then((data)=>{
 	
 		resp.status(200).send(data);
 		console.log(data);
 	
-	}).catch((data)=>{
+	})
+	.catch((data)=>{
 	
 		resp.status(400).send(data);
 	});
+});
 
+//API to fech payments
+app.get('/fetchPayment/:id',(req,resp)=>{
 
+	rzp.payments.fetch(req.params.id)
+	.then((data)=>{
+		resp.status(200).send(data);
+	})
+	.catch((err)=>{
+		resp.status(400).send(err);
+	})
 });
 
 
