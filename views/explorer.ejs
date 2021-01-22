@@ -8,13 +8,9 @@
   <meta charset="utf-8">
   <style type="text/css">
   @import url(https://fonts.googleapis.com/css?family=Nunito);
-
-
 h1 {
    font-size: 250%
 }
-
-
 .title {
   width: 10%;
   padding: 5%;
@@ -22,12 +18,10 @@ h1 {
   background: rgba(240,230,220, .7);
   box-shadow: 0 0 8px rgba(0, 0, 0, .7);
 }
-
 ::placeholder{
   color: #70be53;
   opacity: 1;
 }
-
 .header {
   text-align: center;
   font-size: 175%;
@@ -43,25 +37,19 @@ h1 {
   padding-top: 18px;
   margin-left: -806px;
 }
-
 #title h1 {
  transform: translateZ(.25px) scale(.75);
  transform-origin: 50% 100%;
-
 }
-
-
 *{  
   margin:0;
   padding:0;
 }
-
 body{
   
   background-color:#f0f0f0;
   font-family:helvetica;
 }
-
 a{
   display:block;
   color:#ad5482;  
@@ -70,7 +58,6 @@ a{
   margin-top:40px;
   text-align:center;
 }
-
 #bg{
   position:relative;
   top:20px;
@@ -82,7 +69,6 @@ a{
   margin-right:auto; 
   border:#fff 15px solid;
 }
-
 .module{
   position:relative;
   top:15%;    
@@ -97,7 +83,6 @@ a{
   box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
   margin-top: -202px;
 }
-
 .module1{
   position:relative;
   top:30%;    
@@ -112,12 +97,10 @@ a{
   box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
   margin-top: -191px;
 }
-
 .module ul{
   list-style-type:none;
   margin:0;
 }
-
 .tab{
   float:left;
   height:60px;
@@ -129,35 +112,28 @@ a{
   cursor:pointer;
   transition:background .4s;
 }
-
 .tab:first-child{  
   -webkit-border-radius: 5px 0px 0px 0px;
   border-radius: 5px 0px 0px 0px;
 }
-
 .tab:last-child{  
   -webkit-border-radius: 0px 5px 0px 0px;
   border-radius: 0px 5px 0px 0px;
 }
-
 .tab:hover{  
   background-color:rgba(0,0,0,.1);
 }
-
 .activeTab{
   background:#fff;
 }
-
 .activeTab .icon{
   opacity:1;
 }
-
 .icon{
   height:24px;
   width:24px;
   opacity:.2;
 }
-
 .form{
   float:left;
   height:86%;
@@ -173,7 +149,6 @@ a{
   margin-top: -208px;
   margin-left: 2%;
 }
-
 .textbox{
   height: 245px;
   width: 339px;
@@ -185,7 +160,6 @@ a{
   margin-inline: 59px;
   background: black;
 }
-
 #requestParams{
   color: #70be53;
 }
@@ -195,7 +169,6 @@ a{
 #paymentResponse{
   color: #70be53;
 }
-
 .textbox1{
   height:50px;
   width:100%;
@@ -204,9 +177,7 @@ a{
   box-sizing:border-box;
   padding:10px;
   margin-bottom:30px;
-
 }
-
 .textbox2{
   height: 200px;
     width: 800px;
@@ -219,9 +190,6 @@ a{
   background: black;
       margin-left: 89px;
 }
-
-
-
 .button{
   height:50px;
   width:50%;
@@ -239,12 +207,10 @@ a{
   margin-left: 247px;
   margin-top: -5px;
 }
-
 .button:hover{
   background:#36649c;
   
 }
-
 .headerdetails{
   margin-left: 360pxpx;
 }</style>
@@ -258,10 +224,10 @@ a{
      method: POST
      body:request Payload
      headers:{
-     	'content-type: application/json; charset=UTF-8'
-     	'Authorization' : 'Basic ' + 'base 64 api key token
+      'content-type: application/json; charset=UTF-8'
+      'Authorization' : 'Basic ' + 'base 64 api key token
      }
- 	</pre>
+  </pre>
 <form class="form">
        <textarea id="requestParams" class="textbox"></textarea>
        <textarea type="text" id="responseParams" placeholder="API Response" class="textbox" ></textarea>
@@ -279,6 +245,7 @@ a{
 
 <script type="text/javascript">
 document.getElementById("openCheckout").disabled=true;
+document.getElementById("openCheckout").style.backgroundColor="#ccc";
 const todo = {
   "amount": 500,
   "currency": "INR",
@@ -297,17 +264,16 @@ function send(){
         },
         redirect: 'follow'
     };
-
 fetch("/apiExplorer", requestOptsion)
   .then(response => response.json())
   .then(result => {console.log(result);
     document.getElementById("responseParams").value = JSON.stringify(result);
     orderID = result.id;
     document.getElementById("openCheckout").disabled=false;
+    document.getElementById("openCheckout").style.backgroundColor="#36649c";
   })
   .catch(error => console.log('error', error));
 }
-
 function openRazorpayCheckout(){
   if (orderID ==null)
       alert('order_id is empty');
@@ -318,7 +284,7 @@ function openRazorpayCheckout(){
     "description": "Test Transaction",
     "order_id": "", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     "handler": function (response){
-        document.getElementById("paymentResponse").value = JSON.stringify(response);
+        document.getElementById("paymentResponse").value = JSON.stringify(response.razorpay_payment_id)+" "+ JSON.stringify(response);
     },
     "prefill": {
         "name": "Gaurav Kumar",
@@ -333,9 +299,7 @@ function openRazorpayCheckout(){
       }
     }; 
     options.order_id=orderID;
-
     var rzp1 = new Razorpay(options);
-
     rzp1.on('payment.failed', function (response){
         alert(response.error.code);
         alert(response.error.description);
@@ -345,13 +309,10 @@ function openRazorpayCheckout(){
         alert(response.error.metadata.order_id);
         alert(response.error.metadata.payment_id);
     });
-
     rzp1.open();
     e.preventDefault();
-
   }
 }
 </script>
 
 </html>
-
