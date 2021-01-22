@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>testing</title></head>
+<body>
+
+<pre>URL: api.razorpay.com/v1/orders</pre>
+<pre>method: POST
+     body:request Payload
+     headers:{
+     'content-type: application/json; charset=UTF-8'
+     'Authorization' : 'Basic ' + 'base 64 api key token
+   }</pre>
+
+<input type="text" id="requestParams"></input>
+<button onclick="send()">send</button>
+<input type="text" id="responseParams"></input>
+
+
+
+<script type="text/javascript">
+const todo = {
+  "amount": 500,
+  "currency": "INR",
+  "receipt": "receipt#1"
+};
+document.getElementById("requestParams").value = JSON.stringify(todo);
+
+function send(){
+    var requestoptions = document.getElementById("requestParams").value;
+    var requestOptsion={
+        method: 'POST',
+        body: requestoptions,
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        },
+        redirect: 'follow'
+    };
+
+
+fetch("/apiExplorer", requestOptsion)
+  .then(response => response.text())
+  .then(result => {console.log(result);
+    document.getElementById("requestParams").value = "";
+    document.getElementById("responseParams").value = result;})
+  .catch(error => console.log('error', error));
+
+}
+
+</script>
+
+</body>
