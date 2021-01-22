@@ -1,10 +1,13 @@
 <html>
 <head>
 <title>testing</title></head>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <body>
 
 <pre>URL: api.razorpay.com/v1/orders</pre>
-<pre>method: POST
+<pre>
+  request object:
+     method: POST
      body:request Payload
      headers:{
      'content-type: application/json; charset=UTF-8'
@@ -14,15 +17,21 @@
 <input type="text" id="requestParams"></input>
 <button onclick="send()">send</button>
 <input type="text" id="responseParams"></input>
+</br>
+</br>
+</br>
 
-
+<button id="openCheckout" onclick="openCheckout()">Open checkout</button>
 
 <script type="text/javascript">
+// document.getElementById("openCheckout").disabled=true;
 const todo = {
   "amount": 500,
   "currency": "INR",
   "receipt": "receipt#1"
 };
+var orderID="order_GSEEjiFP60CMjd";
+
 document.getElementById("requestParams").value = JSON.stringify(todo);
 
 function send(){
@@ -36,14 +45,60 @@ function send(){
         redirect: 'follow'
     };
 
-
 fetch("/apiExplorer", requestOptsion)
-  .then(response => response.text())
+  .then(response => response.json())
   .then(result => {console.log(result);
     document.getElementById("requestParams").value = "";
-    document.getElementById("responseParams").value = result;})
+    document.getElementById("responseParams").value = JSON.stringify(result);
+    orderID = result.id;
+  })
   .catch(error => console.log('error', error));
+}
 
+function openCheckout(){
+  if (orderID ==null)
+      alert('order_id is empty');
+  else{
+    var options = {
+    "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "name": "Acme Corp",
+    "description": "Test Transaction",
+    "order_id": "", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+      }
+    }; 
+    options.order_id=orderID;
+
+    var rzp1 = new Razorpay(options);
+
+    rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+    });
+
+    rzp1.open();
+    e.preventDefault();
+
+  }
 }
 
 </script>

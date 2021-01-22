@@ -15,7 +15,7 @@ app.set('view engine','ejs');
 
 //index route of the server:
 app.get('/',function(req,resp){
-	resp.render('testing.ejs',null);
+	resp.render('explorer.ejs',null);
 });
 
 //API explorer Route
